@@ -15,17 +15,8 @@ const isPalindrome = (string) => {
 isPalindrome('Лёша на полке клопа нашёл ');
 
 
-const extractNumber = (string) => {
-  let tempString = '';
-  if (Number.isNaN(string)) {
-    tempString = string.match(/\d+/g);
-    tempString.join('');
-    return parseInt(tempString, 10);
-  } else {
-    return Math.floor(string);
-  }
-};
-// console.log(extractNumber(2222.999));
+const extractNumber = (string) => parseInt(string.toString().replace(/\D/g,''), 10);
+
 extractNumber('1 кефир, 0.5 батона');
 
 
