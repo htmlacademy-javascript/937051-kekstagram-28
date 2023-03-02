@@ -26,33 +26,30 @@ const NAMES = [
   'Марьяна',
 ];
 
-const getRandomNumber = (min, max) => {
-  const lower = Math.ceil(Math.min(min, max));
-  const upper = Math.floor(Math.max(min, max));
-  const result = Math.random() * (upper - lower + 1) + lower;
-  return Math.floor(result);
+const getRandomNumber = (a, b) => {
+  const lower = Math.ceil(Math.min(a, b));
+  const upper = Math.floor(Math.max(a, b));
+  return Math.floor(Math.random() * (upper - lower + 1) + lower);
 };
 
 const getRandomArrayElement = (elements) =>
   elements[getRandomNumber(0, elements.length - 1)];
 
 const createComment = (commentId) => ({
-  id: commentId + 1,
+  id: commentId,
   avatar: `img/avatar-${getRandomNumber(1, 6)}.svg`,
   message: getRandomArrayElement(MESSAGES),
   name: getRandomArrayElement(NAMES),
 });
 
 const createPhoto = (photoId) => ({
-  id: photoId + 1,
+  id: photoId,
   url: `photos/${getRandomNumber(1, 25)}.jpg`,
   description: getRandomArrayElement(DESCRIPTIONS),
   likes: getRandomNumber(15, 200),
-  comments: Array.from({ length: getRandomNumber(1, 5) }, (el, key) =>
-    createComment(key)
-  ),
+  comments: Array.from({ length: getRandomNumber(1, 5) }, (_, key) => createComment(key + 1)),
 });
 
-const photosList = Array.from({ length: 25 }, (el, key) => createPhoto(key));
+const photosList = Array.from({ length: 25 }, (_, key) => createPhoto(key + 1));
 
 console.log(photosList);
