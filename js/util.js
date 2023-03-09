@@ -1,7 +1,4 @@
 const isCorrectLength = (string, maxLength) => string.length <= maxLength;
-// console.log(isCorrectLength('проверяемая строка', 10));
-isCorrectLength('проверяемая строка', 10);
-
 
 const isPalindrome = (string) => {
   const inputString = string.toLowerCase().replaceAll(' ', '');
@@ -11,14 +8,8 @@ const isPalindrome = (string) => {
   }
   return inputString === outputString;
 };
-// console.log(isPalindrome('Лёша на полке клопа нашёл '));
-isPalindrome('Лёша на полке клопа нашёл ');
-
 
 const extractNumber = (string) => parseInt(string.toString().replace(/\D/g,''), 10);
-
-extractNumber('1 кефир, 0.5 батона');
-
 
 const padString = (string, length, padding) => {
   let result = string;
@@ -28,5 +19,15 @@ const padString = (string, length, padding) => {
   }
   return result;
 };
-// console.log(padString('qwerty', 4, '0'));
-padString('qwerty', 4, '0');
+
+
+const getRandomNumber = (a, b) => {
+  const lower = Math.ceil(Math.min(a, b));
+  const upper = Math.floor(Math.max(a, b));
+  return Math.floor(Math.random() * (upper - lower + 1) + lower);
+};
+
+const getRandomArrayElement = (elements) =>
+  elements[getRandomNumber(0, elements.length - 1)];
+
+export {getRandomNumber, getRandomArrayElement,};
